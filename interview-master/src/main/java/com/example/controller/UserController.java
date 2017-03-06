@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.example.model.User;
 import com.example.model.UserSearch;
+import com.example.model.UserUpdatePass;
 import com.example.service.UserService;
 
 @Controller
@@ -90,7 +91,7 @@ public class UserController {
 	  
 	/**
 	   * /update  --> Update the user details 
-	   * Params which can be updated are password, mobileNumber, college, company
+	   * Params which can be updated are mobileNumber, college, company
 	   * 
 	   * @param user.id To uniquely identify user
 	   * @param user.<param> The new value of param
@@ -101,6 +102,26 @@ public class UserController {
 	public String updateUser(User user) {
 	    try {
 	      userService.update(user);
+	    }
+	    catch (Exception ex) {
+	      return "Error updating the user: " + ex.toString();
+	    }
+	    return "User succesfully updated!";
+	}
+	
+	/**
+	   * /update  --> Update the user details 
+	   * Params which can be updated are password
+	   * 
+	   * @param user.id To uniquely identify user
+	   * @param user.<param> The new value of param
+	   * @return A string describing if the user is successfully updated or not.
+	*/
+	@RequestMapping("/updatePassword")
+	@ResponseBody
+	public String updateUserPassword(UserUpdatePass user) {
+	    try {
+	      userService.updatePassword(user);
 	    }
 	    catch (Exception ex) {
 	      return "Error updating the user: " + ex.toString();

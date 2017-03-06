@@ -1,8 +1,10 @@
-package com.example.model;
+package com.example.repo;
 
 import javax.transaction.Transactional;
 
 import org.springframework.data.repository.CrudRepository;
+
+import com.example.model.User;
 
 @Transactional
 public interface UserDao extends CrudRepository<User, Long> {

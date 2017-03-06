@@ -31,6 +31,11 @@ public class User {
 	private String thirdPartyAccountID;
 	private String thirdPartyAuthServer;
 	
+	protected User() {
+        // no-args constructor required by JPA spec
+        // this one is protected since it shouldn't be used directly
+    }
+	
 	public long getId() {
 		return id;
 	}
